@@ -1,0 +1,43 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: bisque;
+  margin-bottom: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar a:hover {
+  color: teal;
+  text-decoration: underline;
+}
+
+.navbar a.active {
+  color: teal;
+  text-decoration: underline;
+}
+
+.navbar a.active:hover {
+  color: black;
+  text-decoration: none;
+}
+.navbar button {
+  background-color: bisque;
+  border: none;
+}
+
+.navbar button {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar button:hover {
+  color: teal;
+  text-decoration: underline;
+}
