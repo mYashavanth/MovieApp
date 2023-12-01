@@ -5,6 +5,7 @@ import Loading from "../Conponents/Loading";
 import DataCard from "../Conponents/DataCard";
 import styles from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 export default function Home() {
   const [loading, setLoadin] = useState(false);
@@ -13,6 +14,7 @@ export default function Home() {
   const NavigateTo = useNavigate();
   const apiKey = "bdb533ec";
   const { search, setSearch } = useContext(AuthContext);
+  const toast = useToast()
 
   useEffect(() => {
     fetchData(search);
@@ -51,7 +53,14 @@ export default function Home() {
 
   useEffect(() => {
     if (!isAuth) {
-      alert("Please Login to Access the Home");
+      // alert("Please Login to Access the Home");
+      toast({
+        title: 'Failed.',
+        description: "Please Login to Access the Home",
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      })
       NavigateTo("/login");
     }
   }, [isAuth]);

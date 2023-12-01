@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 export default function SignUp() {
   const NavigatTo = useNavigate()
@@ -9,6 +10,7 @@ export default function SignUp() {
     email: "",
     password: "",
   });
+  const toast = useToast()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,7 +24,14 @@ export default function SignUp() {
       user.email === "" ||
       user.password === ""
     ) {
-        alert("Please fill all the fields")
+        // alert("Please fill all the fields")
+        toast({
+          title: 'Failed.',
+          description: "Please fill all the fields",
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        })
     }else {
         localStorage.setItem("user", JSON.stringify(user));
         NavigatTo("/login")

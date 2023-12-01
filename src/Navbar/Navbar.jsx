@@ -9,12 +9,15 @@ export default function Navbar() {
   return (
     <>
       <div className={styles.navbar}>
+        <Link to="/">Home</Link>
+        {
+          isAuth?"":
         <Link to="/signup">Sign Up</Link>
+        }
         <Link to="/login">
           {isAuth ? JSON.parse(data.current).name.toUpperCase() : "Login"}
         </Link>
         <button onClick={() => setIsAuth(false)}>Logout</button>
-        <Link to="/">Home</Link>
       </div>
     </>
   );

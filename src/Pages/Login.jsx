@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 export default function Login() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
@@ -11,6 +12,7 @@ export default function Login() {
     password: "",
   });
   const loginData = localStorage.getItem("user");
+  const toast = useToast()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,9 +30,23 @@ export default function Login() {
     ) {
       setIsAuth(true);
       NavigateTo("/");
-      alert("Login Successful");
+      // alert("Login Successful");
+      toast({
+        title: 'Success.',
+        description: "Login Successful",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
     } else {
-      alert("Login Failed");
+      // alert("Login Failed");
+      toast({
+        title: 'Failed.',
+        description: "Login Failed",
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      })
     }
 
     setUser({

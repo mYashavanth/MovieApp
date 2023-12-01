@@ -1,14 +1,18 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../Conponents/Loading";
 import styles from "./Details.module.css";
+import { AuthContext } from "../AuthContext/AuthContextProvider";
+
 
 export default function Details() {
   const [loading, setLoadin] = useState(false);
   const [datas, setDatas] = useState({});
   const params = useParams();
   const apiKey = "bdb533ec";
+  const {isAuth} = useContext(AuthContext)
+  const NavigateTo = useNavigate()
   console.log(params);
 
   useEffect(() => {
